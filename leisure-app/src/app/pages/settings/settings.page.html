@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="flex-center">
+    <form [formGroup]="form">
+      <ion-card>
+        <ion-img src="../../assets/img/logo.jpg" alt="app-logo" style="width: 50%; margin: auto;">
+        </ion-img>
+        
+      
+        <ion-card-content>
+          <ion-label>Please enter your email address to request a password reset.</ion-label>
+          <ion-item>
+            <ion-input type="email" formControlName="email" label="Email" label-placement="floating" fill="outline" placeholder="Enter your email address" [(ngModel)]="email"></ion-input>
+
+            <!--<ion-input type="email" formControlName="email" label="Email" labelPlacement="floating" placeholder="Enter your email address" [(ngModel)]="email"></ion-input>-->
+          </ion-item>
+          <ion-label color="danger" *ngIf="form.get('email')?.touched && form.get('email')?.errors?.['required']">Email is mandatory</ion-label>
+          <ion-label color="danger" *ngIf="form.get('email')?.touched && form.get('email')?.errors?.['email']">Email is invalid</ion-label>
+          <ion-button color="success" size="full" [disabled]="!form.valid" (click)="reset()">Reset Password</ion-button>
+          <ion-button color="success" fill="clear" size="full" (click)="login()">Back to Login Page</ion-button>
+        </ion-card-content>
+      </ion-card>
+    </form>
+  </div>
+</ion-content>

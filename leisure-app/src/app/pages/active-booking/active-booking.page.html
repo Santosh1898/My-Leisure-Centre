@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="home()">
+        <ion-icon name="home" color="light" size="large"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>My Bookings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content style="display: flex; align-items: center; padding-top: 0; padding-bottom: 0;">
+      <ion-icon name="information-circle-outline" color="success" style="font-size: 10em; margin-right: 8px;"></ion-icon>
+      <p style="margin: 0;">Here, you will find the details of your recent bookings. If you need to amend the booking, please contact the leisure centre directly without any delay. The details of the centre are provided on the home page. Click the home icon on the top of the page for more details.</p>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngFor="let booking of bookings">
+    <ion-card-content>
+      
+      <h2><ion-icon name="calendar" color="success"></ion-icon><strong> Booking Details: </strong></h2>
+      <p><strong>Centre Name:</strong> {{ booking.centreName }}</p>
+      <p><strong>Activity Name:</strong> {{ booking.activityName }}</p>
+      <p><strong>Date Selected:</strong> {{ booking.selectedDate | date: 'dd MMM yyyy (EEEE)'}}</p>
+      <p><strong>Time Slot:</strong> {{ booking.timeSlot }}</p>
+      <p><strong>Quantity:</strong> {{ booking.quantity }}</p>
+      <p><strong>Total Paid:</strong> {{ booking.totalCost }}</p>
+      <p><strong>Booked on:</strong> {{ booking.systemDateTime | date: 'dd MMM yyyy, HH:mm a'}}</p>
+      <!-- Additional details or actions related to the active booking page -->
+    </ion-card-content>
+  </ion-card>
+</ion-content>

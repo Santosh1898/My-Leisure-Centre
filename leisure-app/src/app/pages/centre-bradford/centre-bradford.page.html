@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Bradford-on-Avon Pool</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="resetSelection()">
+        <ion-icon name="refresh-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Booking Guide Card -->
+  <ion-card>
+    <ion-card-content>
+      <h1>Welcome to "Bradford-on-Avon Pool" !</h1>
+      <p>
+        To book your activity:
+      </p>
+      <ul>
+        <li><ion-icon name="arrow-forward-circle-outline" color="success"></ion-icon> Select your preferred date of an activity, scroll right for future dates.</li>
+        <li><ion-icon name="arrow-forward-circle-outline" color="success"></ion-icon> Select your preferred time slot from dropdown list.</li>
+        <li><ion-icon name="arrow-forward-circle-outline" color="success"></ion-icon> Then click book now button at the bottom to navigate to payment page.</li>
+      </ul>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngFor="let activity of activities_bradford">
+    <ion-card-content>
+      <ion-label>
+        <h2>{{ activity.title }}</h2>
+        <ion-img [src]="activity.img" alt="swim-img" style="width: 100%; margin: auto;"></ion-img>
+        <p>{{ activity.description }}</p>
+        <br>
+        <p>Available spaces {{ activity.spaces }}</p>
+        <p>{{ activity.cost }} per person</p>
+        <br>
+        <h3>Date Selection</h3>
+        <div style="display: flex; overflow-x: auto; white-space: nowrap; padding: 1px 0;">
+          <div *ngFor="let date of dateList" style="margin: 0 -10px;">
+            <ion-item
+              (click)="selectDate(date, activity)"
+              [class.selected]="selectedDate[activity.id].toDateString() === date.toDateString()"
+              lines="none"
+              style="padding: 0; margin: 0 3px; border: 1px solid black; border-radius: 5px;"
+              >
+              <div [ngClass]="{ 'selected-date': isSelectedDate(date, activity.id) }">
+                {{ date | date: 'd MMM' }}
+              </div>
+            </ion-item>
+          </div>
+        </div>
+        <ion-item *ngIf="selectedDay[activity.id]" lines="none">
+          <div style="display: flex; align-items: center;">
+            <div style="flex: 1; white-space: wrap; overflow: visible; text-overflow: ellipsis;">
+              Select Time Slot for {{ selectedDay[activity.id] }}
+            </div>
+          </div>
+          <ion-select style=" border: 1px solid black; border-radius: 5px; margin-top: 10px; width: 100px;"
+          [(ngModel)]="selectedActivityTimeSlot"
+          >
+            <ion-select-option *ngFor="let slot of activity.timeSlots" [value]="slot">{{ slot }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-label>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="success">
+    <ion-buttons slot="end">
+      <ion-button (click)="bookNow()" expand="block" fill="solid">
+        <strong>Book Now</strong>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

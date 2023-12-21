@@ -1,0 +1,19 @@
+ion-input, ion-datetime{
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    --padding-start: 8px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.left_col{
+    padding-left:0px;
+}
+
+.right_col{
+    padding-right:0px;
+}
+ion-content {
+    --background: var(--ion-color-success);
+}
+

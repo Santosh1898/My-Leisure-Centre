@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Book an Activity</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Booking Guide Card -->
+  <ion-card>
+    <ion-card-content>
+      <h2>🚀 Ready for an Adventure?</h2>
+      <p>To book your next thrilling activity:</p>
+      <ul>
+        <li><ion-icon name="arrow-forward-circle-outline" color="success"></ion-icon> Select your preferred leisure centre from the dropdown list.</li>
+        <li><ion-icon name="arrow-forward-circle-outline" color="success"></ion-icon> Choose the exciting activity, date, and time slot.</li>
+        <li><ion-icon name="arrow-forward-circle-outline" color="success"></ion-icon> Secure your spot by making a quick payment.</li>
+      </ul>
+      <p>For a sneak peek at our leisure centres, click on the map pin!</p>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-content>
+      <ion-card-title class="input-label">Select Leisure Centre</ion-card-title>
+      <ion-list>
+        <ion-item>
+          <ion-select #selectList (ionChange)="navigateToDestination(selectList.value)" class="item-select" aria-label="Centres" interface="action-sheet" placeholder="Select">
+            <ion-select-option value="activity-zone">The Activity Zone</ion-select-option>
+            <ion-select-option value="amesbury">Amesbury Sports Centre</ion-select-option>
+            <ion-select-option value="bradford">Bradford-on-Avon Pool</ion-select-option>
+            <ion-select-option value="calne">Calne Community Campus</ion-select-option>
+            <ion-select-option value="castle-place">Castle Place Leisure Centre</ion-select-option>
+            <ion-select-option value="devizes">Devizes Leisure Centre</ion-select-option>
+            <ion-select-option value="durrington">Durrington Swimming and Fitness Centre</ion-select-option>
+            <ion-select-option value="five">Five Rivers Health and Wellbeing Centre</ion-select-option>
+            <ion-select-option value="leighton">Leighton Recreation Centre</ion-select-option>
+            <ion-select-option value="lime-kiln">Lime Kiln Leisure Centre</ion-select-option>
+            <ion-select-option value="marlborough">Marlborough Leisure Centre</ion-select-option>
+            <ion-select-option value="melksham">Melksham Community Campus</ion-select-option>
+            <ion-select-option value="nadder">Nadder Centre</ion-select-option>
+            <ion-select-option value="olympiad">Olympiad Leisure Centre</ion-select-option>
+            <ion-select-option value="springfield">Springfield Community Campus</ion-select-option>
+            <ion-select-option value="tidworth">Tidworth Leisure Centre</ion-select-option>
+            <ion-select-option value="trowbridge">Trowbridge Sports Centre</ion-select-option>
+            <ion-select-option value="vale">The Vale Community Campus</ion-select-option>
+            <ion-select-option value="warminster">Warminster Sports Centre</ion-select-option>
+            <ion-select-option value="westbury">Westbury Pool</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+      <br />
+      <ion-card-header color="light">
+        <ion-card-title size="full">Nearest Leisure Centre information</ion-card-title>
+      </ion-card-header>
+      <iframe src="https://www.google.com/maps/d/embed?mid=1DSpjGQqcg9eH6gcXQQs5TVUhjJJgF-M&ehbc=2E312F&noprof=1" width="100%"  height="480"></iframe>
+      
+    </ion-card-content>
+    
+  </ion-card>
+</ion-content>

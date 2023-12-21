@@ -1,0 +1,9 @@
+ion-content {
+    --background: var(--ion-color-success);
+}
+//circling the selected date
+.selected-date {
+    border: 2px solid blue; 
+    border-radius: 50%;
+    padding: 5px;
+  }

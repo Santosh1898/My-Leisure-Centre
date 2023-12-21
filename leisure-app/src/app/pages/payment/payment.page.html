@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Payment</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <h2><strong>Confirm your booking details:</strong></h2>
+      <br>
+      <p><strong>Centre Name:</strong> {{ centreName }}</p>
+      <p><strong>Activity Name:</strong> {{ activityName }}</p>
+      <p><strong>Date Selected:</strong> {{ selectedDate | date: 'dd MMM yyyy (EEEE)'}}</p>
+      <p><strong>Time Slot:</strong> {{ timeSlot }}</p>
+      <p><strong>Cost:</strong> {{ cost }} per person</p>
+      <br>
+      <ion-label>Number of Person</ion-label>
+      <ion-input type="number" placeholder="Enter quantity" [(ngModel)]="quantity" (input)="calculateTotalCost()" required></ion-input>
+      
+      <!-- payment form or details here -->
+      
+      <div>
+        <br>
+        <h2><strong>Pay Now to confirm your Booking.</strong></h2>
+        <ion-item>
+          <ion-label>Email confirmation required? </ion-label>
+          <ion-checkbox slot="end"></ion-checkbox>
+        </ion-item>
+        <br>
+        <ion-label>Card Information</ion-label>
+        <ion-input type="number" placeholder="1234 1234 1234 1234" required></ion-input>
+        <ion-row>
+          <ion-col size="8" class="left_col">
+            <ion-input type="month" placeholder="MM/YYYY"></ion-input>
+          </ion-col>
+             
+          <ion-col size="4" class="right_col">
+            <ion-input type="number" placeholder="CVC" required></ion-input>
+          </ion-col>
+        </ion-row>
+        
+        <ion-label>Name on card</ion-label>
+        <ion-input type="text" placeholder="" required></ion-input>
+      </div>
+    </ion-card-content>
+    <ion-card-content>
+      <ion-button color="success" size="full" (click)="payNow()">
+        Pay {{ totalCost }} </ion-button>
+      
+    </ion-card-content>
+  </ion-card>
+  
+  
+</ion-content>
